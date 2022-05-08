@@ -1,52 +1,60 @@
 "주의: Source Explorer의 충돌을 피하기 위해서 SrcExpl_pluginList를 새로 작성
 
 "====================================================
-"= Bundle
+"= Plugin
 "====================================================
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+" :PluginList          - list configured bundles
+" :PluginInstall(!)    - install(update) bundles
+" :PluginSearch(!) foo - search(or refresh cache first) for foo
+" :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
 "
 " see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
+" NOTE: comments after Plugin command are not allowed..
 
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
-Bundle 'snipMate'
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-Bundle 'The-NERD-tree'
-Bundle 'taglist.vim'
-Bundle 'bufexplorer.zip'
-Bundle 'DirDiff.vim'
-Bundle 'git://github.com/wesleyche/SrcExpl.git'
-Bundle 'SuperTab'
-"Bundle 'SuperTab-continued.'
-Bundle 'cscope_macros.vim'
-Bundle 'gtags.vim'
-Bundle 'OmniCppComplete'
-Bundle 'armasm'
-Bundle 'https://github.com/dhruvasagar/vim-table-mode.git'
+Plugin 'snipMate'
+Plugin 'L9'
+Plugin 'FuzzyFinder'
+"Plugin 'The-NERD-tree'
+Plugin 'taglist.vim'
+Plugin 'bufexplorer.zip'
+Plugin 'DirDiff.vim'
+"Plugin 'git://github.com/wesleyche/SrcExpl.git'
+Plugin 'SuperTab'
+"Plugin 'SuperTab-continued.'
+Plugin 'cscope_macros.vim'
+Plugin 'gtags.vim'
+Plugin 'OmniCppComplete'
+Plugin 'armasm'
+Plugin 'https://github.com/dhruvasagar/vim-table-mode.git'
 "주석달기: \cc, \cn, \cs
 "다른모양 주석 설정: \ca
 "주석해제: \<space>
-Bundle 'The-NERD-Commenter'
-Bundle 'AutoComplPop'
+"Plugin 'The-NERD-Commenter'
+Plugin 'AutoComplPop'
 "Bottom Bar
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 "Git Plugin
-Bundle 'tpope/vim-fugitive'
-Bundle 'klen/python-mode'
+Plugin 'tpope/vim-fugitive'
+Plugin 'klen/python-mode'
 
+Plugin 'valloric/youcompleteme'
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'nvie/vim-flake8'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'airblade/vim-gitgutter'
+
+call vundle#end()
 filetype plugin indent on     " required!
 
 "====================================================
@@ -74,12 +82,12 @@ colorscheme desert
 "==========================
 "= autocmd
 "==========================
-autocmd BufEnter *.c        setlocal ts=8 sw=8 sts=8 noexpandtab
-autocmd BufEnter *.S        setlocal ts=8 sw=8 sts=8 noexpandtab
-autocmd BufEnter *.py       setlocal ts=8 sw=8 sts=8 noexpandtab
-autocmd BufEnter Makefile   setlocal ts=8 sw=8 sts=8 noexpandtab
-autocmd BufEnter .*         setlocal ts=8 sw=8 sts=8 noexpandtab nocindent
-autocmd BufEnter *.md       setlocal ts=8 sw=8 sts=8 noexpandtab nocindent
+"autocmd BufEnter *.c        setlocal ts=8 sw=8 sts=8 noexpandtab
+"autocmd BufEnter *.S        setlocal ts=8 sw=8 sts=8 noexpandtab
+"autocmd BufEnter *.py       setlocal ts=8 sw=8 sts=8 noexpandtab
+"autocmd BufEnter Makefile   setlocal ts=8 sw=8 sts=8 noexpandtab
+"autocmd BufEnter .*         setlocal ts=8 sw=8 sts=8 noexpandtab nocindent
+"autocmd BufEnter *.md       setlocal ts=8 sw=8 sts=8 noexpandtab nocindent
 "augroup vimrc_autocmds
 "    autocmd!
     " highlight characters past column 120
@@ -87,7 +95,7 @@ autocmd BufEnter *.md       setlocal ts=8 sw=8 sts=8 noexpandtab nocindent
     autocmd FileType python match Excess /\%120v.*/
     autocmd FileType python set nowrap
 "    augroup END
-autocmd BufEnter *.sh       setlocal ts=8 sw=8 sts=8 noexpandtab nocindent
+"autocmd BufEnter *.sh       setlocal ts=8 sw=8 sts=8 noexpandtab nocindent
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
