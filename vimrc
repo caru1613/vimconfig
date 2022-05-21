@@ -317,3 +317,4 @@ source ~/vimconfig/plugins/checksymbol.vim
 
 " }
 
+au FileType python map <f6> : !python3 %
